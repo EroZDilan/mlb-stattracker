@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+.eggs/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Database (local only — Railway usa volumen persistente)
+backend/database/mlb.db
+backend/database/*.db-wal
+backend/database/*.db-shm
+
+# Frontend build
+frontend/dist/
+frontend/node_modules/
+
+# Vite
+frontend/.vite/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log

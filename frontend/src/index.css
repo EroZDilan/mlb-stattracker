@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    @apply bg-bg-primary text-white font-sans;
+    scrollbar-width: thin;
+    scrollbar-color: #e94560 #0f1022;
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #0f1022; }
+  ::-webkit-scrollbar-thumb { background: #e94560; border-radius: 3px; }
+  #root { min-height: 100vh; }
+}
+
+/* Grain / noise texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ACES-style easing */
+:root {
+  --ease-aces: cubic-bezier(0.18, 0.98, 0.45, 1);
+  --ease-snap: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@layer components {
+  .card {
+    @apply bg-bg-card rounded-xl border border-white/5;
+  }
+  .badge-live {
+    @apply bg-mlb-red text-white text-xs font-bold px-2 py-0.5 rounded-full animate-pulse;
+  }
+  .badge-final {
+    @apply bg-white/10 text-white/60 text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+  .stat-pill {
+    @apply bg-bg-accent/50 text-white/80 text-xs px-2 py-1 rounded-lg;
+  }
+}
+
+.gsap-hidden       { opacity: 0; transform: translateY(30px); }
+.gsap-hidden-left  { opacity: 0; transform: translateX(-40px); }
+.gsap-hidden-right { opacity: 0; transform: translateX(40px); }
+.gsap-scale-hidden { opacity: 0; transform: scale(0.85); }
