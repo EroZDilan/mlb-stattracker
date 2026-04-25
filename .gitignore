@@ -14,10 +14,12 @@ dist/
 .env.local
 .env.production
 
-# Database (local only — Railway usa volumen persistente)
+# Base de datos local (Turso es la fuente de verdad en producción)
 backend/database/mlb.db
 backend/database/*.db-wal
 backend/database/*.db-shm
+# Réplica local de Turso
+*.db
 
 # Frontend build
 frontend/dist/
