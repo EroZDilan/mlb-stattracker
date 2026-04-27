@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS games (
     status TEXT,
     venue TEXT,
     game_type TEXT,
-    created_at TEXT DEFAULT (datetime('now'))
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS player_game_stats (
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS predictions (
     actual_hits INTEGER,
     actual_runs INTEGER,
     actual_hr INTEGER,
-    created_at TEXT DEFAULT (datetime('now'))
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_games_date ON games(date);
